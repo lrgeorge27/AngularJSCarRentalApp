@@ -1,0 +1,19 @@
+{
+  "name": "angularjs_car_rental",
+  "version": "1.0.0",
+  "description": "AngularJS assignment to create a car rental website.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrgeorge27/AngularJSCarRentalApp.git"
+  },
+  "author": "Lauren George",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lrgeorge27/AngularJSCarRentalApp/issues"
+  },
+  "homepage": "https://github.com/lrgeorge27/AngularJSCarRentalApp#readme"
+}
