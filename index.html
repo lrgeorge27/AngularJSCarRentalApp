@@ -6,24 +6,41 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/solar/bootstrap.min.css" rel="stylesheet" integrity="sha384-Jpv9vxZao0dlyvegpeTxSgc5cczNCOpcV5ihm8RQbrMo263QmC3Sf5HIMBfr+nqx" crossorigin="anonymous">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link href="style.css" rel="stylesheet">
     <title>Car Rental</title>
 </head>
 
 <body>
-    <h1 id="busName">Wicked Good Rent-A-Car</h1>
+    <h1 id="busName" class="text-primary text-center">Wicked Good Rent-A-Car</h1>
     <div ng-controller="CarController as car">
         <div ng-repeat="cars in car.cars">
-            <h2> {{cars.name | uppercase}} </h2>
-            <img ng-src="{{cars.image}}" />
-            <p id="description" ng-show="cars.canRent">Description: {{cars.description}} </p>
-            <h3 id="price" ng-show="cars.canRent">Price per day: {{cars.price | currency}} </h3>
-            <h3 id="available">Available: {{cars.available}} </h3>
-            <p id="options" ng-show="cars.canRent">Additional items: {{cars.options}} </p>
-            <!--<div ng-controller="ButtonController as button">-->
-            <button ng-show="cars.canRent" ng-click="car.rentCar(cars.name, cars.available)"> Rent This Car </button>
-            <!--</div>-->
+            <div class="jumbotron" ng-click="car.unavailable(cars.name, cars.available)">
+                <div class="row">
+                    <div class="col">
+                        <h2 id="name"> {{cars.name | uppercase}} </h2>
+                        <img ng-src="{{cars.image}}" />
+                    </div>
+                    <div class="col">
+                        <h2 id="unavailable" class="text-warning" ng-hide="cars.canRent">Unavailable</h2>
+                        <p id="description" ng-show="cars.canRent">Description: {{cars.description}} </p>
+                        <p id="options" ng-show="cars.canRent">Additional items: {{cars.options}} </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3 id="price" ng-show="cars.canRent">Price per day: {{cars.price | currency}} </h3>
+                        <h3 id="available" ng-show="cars.canRent">Available: {{cars.available}} </h3>
+                    </div>
+
+                    <div class="col">
+                        <div ng-controller="ButtonController as button">
+                            <button type="button" class="btn btn-primary" ng-show="cars.canRent" ng-click="button.rentCar(cars.name, cars.available)"> Rent This Car </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -39,12 +56,11 @@
     <!--<p id="available"></p>-->
     <!--<button id="submit" onclick="addRenter()" type="submit" value="submit">Rent a Car</button>-->
     <!--<p id="display"></p>-->
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
+
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="clientAngular.js"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-    <!--<script src="script.js" type="text/javascript"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>
